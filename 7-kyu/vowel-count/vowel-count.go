@@ -1,16 +1,10 @@
 package kata
 ​
-import "strings"
-​
 func GetCount(str string) (count int) {
-  
-  // Enter solution here
-  for _,char := range str {
-    
-    if strings.ContainsAny(string(char),"aeiou"){
-      
+  for _, c := range str {
+    switch c {
+    case 'a', 'e', 'i', 'o', 'u':
       count++
-      
     }
   }
   return count
