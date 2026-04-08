@@ -2,12 +2,8 @@ package kata
 ​
 ​
 func RoundToNext5(n int) int {
-    for i:= n;i>=n; i++{
-      if i%5==0{
-        return i
-      }
-    }
+  for n % 5 != 0 {
+    n++
+  }
   return n
-  
 }
-​
