@@ -1,9 +1,16 @@
 package kata
 ​
 func FindNb(m int) int {
-  for n := 1 ; m > 0 ; n++ {
-    m -= n*n*n
-    if m == 0 { return n }
+  return FindNbRecursive(m, 1)
+}
+​
+func FindNbRecursive(m int,i int) int {
+  m -= (i*i*i)
+  if m == 0 {
+    return i
   }
-  return -1
+  if m < 0 {
+    return -1
+  }
+  return FindNbRecursive(m, i+1)
 }
