@@ -1,33 +1,24 @@
 package kata
 ​
-import "unicode"
+import "strings"
 ​
-func wave(words string) []string {
+func wave(s string) []string {
   // Your code here and happy coding!
-​
-  var res []string
-​
-// handles cases when empty string is passed
-  if words == "" {
+  res := []string{}
+  if len(s) == 0{
     return []string{}
   }
-// convert word into a slice of runes
-  runes := []rune(words)
-  
-  for i, c := range runes {
-//     create a copy of rune that resets after each iteration
-    var dup []rune
-    dup = append(dup, runes...)
-//     handles string with space between
-    if c == ' ' {
+  for i, v := range s {
+    if v == ' ' {
       continue
     }
-​
-//     uppercase the current character and append to result
-    dup[i] = unicode.ToUpper(dup[i])
-​
-    res = append(res, string(dup))
+    if i > 0 {
+      word := s[0:i] + strings.ToUpper(s[i:i+1]) + s[i+1:]
+      res = append(res, word)
+    } else {
+      word := strings.ToUpper(s[i:i+1]) + s[i+1:]
+      res = append(res, word)
+    }
   }
   return res
 }
-  
