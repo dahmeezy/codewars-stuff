@@ -3,22 +3,24 @@ package kata
 func HighestRank(nums []int) int {
   mp:=make(map[int]int)
   
-  for _,n := range nums{
+//   populate the map with the values and their frequencies
+  for _,n:=range nums{
     mp[n]++
   }
-  h:=0
-  highestK := 0
-  
+//   variables for the highest frequency amd the mode(the number itself)
+  hfreq:=0
+  mode:=0
   for k,v:=range mp{
-    if v > h{
-      h=v
-      highestK = k
-     }
-    if v == h &&  k > highestK {
-      highestK = k
+//     get the highest frequency and mode
+    if v>hfreq{
+      hfreq=v
+      mode=k
     }
+//   If there is a tie for most frequent number, return the largest number among them.
+    if v==hfreq && k>mode{
+      mode =k
     }
-      return highestK
   }
-​
+    return mode
+}
 ​
